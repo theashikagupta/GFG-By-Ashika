@@ -1,19 +1,22 @@
 class Solution {
     public int reverse(int x) {
-        int r, sum = 0;
-        while (x != 0) {
-            r = x % 10;
-            //To check for the overflow 
-            if(sum>Integer.MAX_VALUE/10 || (sum==Integer.MAX_VALUE/10 && r>7)){
-                return 0;
-            }
-            if(sum<Integer.MIN_VALUE/10 || (sum==Integer.MIN_VALUE/10 && r<-8)){
-                return 0;
-            }
-            //if not overflow then proceed further
-            sum = (sum * 10) + r;
-            x /= 10;
-        }
-        return sum;
+      long ans=0;
+      boolean neg=false;
+      if(x<0){
+        neg=true;
+        x=-x;
+      }
+      while(x!=0){
+        int rem=x%10;
+        ans=ans*10+rem;
+        x=x/10;
+      }
+     if(neg){
+        ans=-ans;
+     }
+     if(ans>Integer.MAX_VALUE || ans< Integer.MIN_VALUE){
+        return 0;
+     }
+      return (int)ans;
     }
 }
