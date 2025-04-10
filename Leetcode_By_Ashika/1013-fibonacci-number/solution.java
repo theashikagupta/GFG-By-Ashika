@@ -9,9 +9,9 @@ class Solution {
             int b=1;
             int count=2;
             while(count<=n){
-                int temp=b;
-                b=a+b;
-                a=temp;
+                int c=a+b;
+                a=b;
+                b=c;
                 count++;
 
                 
