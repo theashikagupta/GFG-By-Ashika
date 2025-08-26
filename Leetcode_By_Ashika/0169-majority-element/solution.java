@@ -1,41 +1,30 @@
-// class Solution {
-//     public int majorityElement(int[] nums) {
-//         Arrays.sort(nums); 
-//         int n=nums.length; 
-//         int ans=nums[0];
-//          int freq=1;
-//          for (int i = 1; i < n; i++) {
-//             if (nums[i] == nums[i - 1]) {
-//                 freq++; 
-//             } else {
-//                 freq = 1;
-//                  ans = nums[i]; 
-//             }
-            
-//             if (freq > n/2) { 
-//                 return ans;
-               
-//             }
-//         }
-        
-       
-//         return ans;
-//     }
-// }
-
-class Solution{
-    public int majorityElement(int[] nums){
-        HashMap<Integer,Integer> map=new HashMap<>();
+class Solution {
+    public int majorityElement(int[] nums) {
         int n=nums.length;
-        for(int i=0;i<n;i++){
-            int count=map.getOrDefault(nums[i], 0) + 1;
-            map.put(nums[i],count);
+        // HashMap<Integer,Integer> map=new HashMap<>();
+        // for(int num:nums){
+        //     map.put(num,map.getOrDefault(num,0)+1);
+        //     if(map.get(num)>n/2){
+        //         return num;
+        //     }
+        // }
+        // return -1;
 
-            if(map.get(nums[i])>n/2){
-                return nums[i];
+        //Moore Voting Algorithm
+        int count=1;
+        int candidate=nums[0];
+        for(int i=1;i<n;i++){
+            if(candidate==nums[i]){
+                count++;
+            }else{
+                count--;
             }
-        }return -1;
+            if(count==0){
+                candidate=nums[i];
+                count=1;
+            }
+           
+        }
+         return candidate;
     }
 }
-
-
