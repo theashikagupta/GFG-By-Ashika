@@ -1,25 +1,27 @@
 class Solution {
     public void sortColors(int[] nums) {
-        int low = 0, mid = 0, high = nums.length - 1;
-
-        while (mid <= high) {
-            if (nums[mid] == 0) {
-                // Swap nums[low] and nums[mid]
-                int temp = nums[low];
-                nums[low] = nums[mid];
-                nums[mid] = temp;
-                low++;
-                mid++;
-            } else if (nums[mid] == 1) {
-                mid++;
-            } else { // nums[mid] == 2
-                // Swap nums[mid] and nums[high]
-                int temp = nums[mid];
-                nums[mid] = nums[high];
-                nums[high] = temp;
-                high--;
+    //Dutch Play Algorithm
+        int n=nums.length;
+        int i=0;
+        int j=n-1;
+        int k=0;
+        while(k<=j){
+            if(nums[k]==0){
+                swap(nums,i,k);
+                i++;
+                k++;
+            }
+            else if(nums[k]==2){
+                swap(nums,j,k);
+                j--;
+                
+            }else{
+                k++;
             }
         }
+    }public void swap(int[] nums, int a,int b){
+        int temp=nums[a];
+        nums[a]=nums[b];
+        nums[b]=temp;
     }
 }
-
