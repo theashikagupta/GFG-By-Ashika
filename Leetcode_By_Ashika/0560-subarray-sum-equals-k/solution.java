@@ -1,24 +1,40 @@
-import java.util.HashMap;
-
 class Solution {
     public int subarraySum(int[] nums, int k) {
-        HashMap<Integer, Integer> map = new HashMap<>();
-        
-        int cumSum = 0;
-        map.put(0, 1);  // Handle the case when the subarray starts from index 0
-        
-        int result = 0;
-        for (int i = 0; i < nums.length; i++) {
-            cumSum += nums[i];
+        // //Brute force
+        // int sum=0;
+        // int count=0;
+        // for(int i=0;i<nums.length;i++){
+        //     for(int j=i;j<nums.length;j++){
+        //         sum+=nums[j];
+        //         if(sum==k){
+        //             count++;
+        //         }
 
-            if (map.containsKey(cumSum - k)) {
-                result += map.get(cumSum - k); // Add the count of subarrays with sum `cumSum - k`
+        //     }
+        //     sum=0;
+        // }return count;
+        //Optimal soln
+        Map<Integer, Integer> prefixCount = new HashMap<>();
+        prefixCount.put(0, 1); // base case: prefix sum 0 appears once
+
+        int currSum = 0;
+        int count = 0;
+
+        for (int num : nums) {
+            currSum += num;
+
+            // check if there exists a prefix sum such that currSum - prefixSum = k
+            if (prefixCount.containsKey(currSum - k)) {
+                count += prefixCount.get(currSum - k);
             }
 
-            // Increment the count of `cumSum` in the map
-            map.put(cumSum, map.getOrDefault(cumSum, 0) + 1);
+            // update current prefix sum frequency
+            prefixCount.put(currSum, prefixCount.getOrDefault(currSum, 0) + 1);
         }
-        return result;
+
+        return count;
+
     }
 }
+
 
