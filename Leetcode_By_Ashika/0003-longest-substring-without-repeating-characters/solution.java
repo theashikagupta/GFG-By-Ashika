@@ -43,6 +43,25 @@ class Solution {
     //     }
     //     return true;
     
+
+
+    
+        // int result = 0;
+        // int []freq = new int[256];  // To store frequency of characters (ASCII range)
+
+        // for(int i = 0, j = 0; i < s.length(); i++) {
+        //     freq[s.charAt(i)]++;  // Add current character to window
+
+        //     // If duplicate found, shrink window from the left
+        //     while(freq[s.charAt(i)] > 1) {
+        //         freq[s.charAt(j++)]--;
+        //     }
+
+        //     // Update max length of substring without repeating characters
+        //     result = Math.max(result, i - j + 1);
+        // }
+        // return result;
+    
     }
   
 }
