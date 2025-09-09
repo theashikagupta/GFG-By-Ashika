@@ -27,10 +27,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Sync GFG Submissions
-        uses: Sreerag-B-S/gfg-sync@v1.1
+        uses: gaurav-gfg/gfg-scraper@v1
         with:
-          username: ${{ secrets.GFG_USERNAME }}
-          password: ${{ secrets.GFG_PASSWORD }}
+          gfg-username: ${{ secrets.GFG_USERNAME }}
+          gfg-password: ${{ secrets.GFG_PASSWORD }}
           destination-folder: solutions/gfg
 
   sync_codeforces:
@@ -40,7 +40,7 @@ jobs:
         uses: actions/checkout@v4
       
       - name: Sync Codeforces Submissions
-        uses: ra-mishra/codeforces-sync@v2
+        uses: ankit-gupta-24/codeforces-sync@v1
         with:
           handle: ${{ secrets.CF_HANDLE }}
           session_id: ${{ secrets.CF_SESSION }}
