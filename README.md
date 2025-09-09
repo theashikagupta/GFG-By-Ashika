@@ -3,11 +3,6 @@
 This repository features my solutions to popular **DSA problems** from GeeksforGeeks.
 
 ---
-## 🏆 GFG Stats
-
-![GFG Stats](https://gfgcard.vercel.app/ashikagupta)
-
----
 
 ##  🎯 Top 50 DP Problems (GeeksforGeeks)
 
