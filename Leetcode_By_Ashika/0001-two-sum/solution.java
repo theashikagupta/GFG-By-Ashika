@@ -1,5 +1,7 @@
+//TC:O(n)
+//SC:O(n)
 import java.util.*;
-
+   
 class Solution {
     public int[] twoSum(int[] nums, int target) {
         Map<Integer, Integer> map = new HashMap<>();
