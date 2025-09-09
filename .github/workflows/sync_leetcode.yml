@@ -18,5 +18,5 @@ jobs:
           github-token: ${{ github.token }}
           leetcode-csrf-token: ${{ secrets.csrftoken }}
           leetcode-session: ${{ secrets.LEETCODE_SESSION }}
-          destination-folder: Leetcode_By_Ashika
+          solution-folder: solutions
           verbose: true
