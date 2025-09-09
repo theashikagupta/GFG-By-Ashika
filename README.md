@@ -5,7 +5,7 @@ This repository features my solutions to popular **DSA problems** from GeeksforG
 ---
 ## 🏆 GFG Stats
 
-![GFG Stats](https://gfgcard.vercel.app/AshikaGupta_01)
+![GFG Stats](https://gfgcard.vercel.app/ashikagupta)
 
 ---
 
