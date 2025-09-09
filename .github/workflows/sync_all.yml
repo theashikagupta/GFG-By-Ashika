@@ -1,0 +1,57 @@
+name: Combined DSA Sync
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  sync_leetcode:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Sync LeetCode Submissions
+        uses: joshcai/leetcode-sync@v1.7
+        with:
+          github-token: ${{ github.token }}
+          leetcode-csrf-token: ${{ secrets.LEETCODE_CSRF_TOKEN }}
+          leetcode-session: ${{ secrets.LEETCODE_SESSION }}
+          destination-folder: solutions/leetcode
+          verbose: true
+
+  sync_gfg:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4
+
+      - name: Sync GFG Submissions
+        uses: rahul-bhatia/gfg-scraper@v1.0
+        with:
+          username: ${{ secrets.GFG_USERNAME }}
+          password: ${{ secrets.GFG_PASSWORD }}
+          csrf_token: ${{ secrets.GFG_CSRF_TOKEN }}
+          gfg_token: ${{ secrets.GFG_TOKEN }}
+          destination_folder: solutions/gfg
+
+  sync_codeforces:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Sync Codeforces Submissions
+        uses: anand-mishra123/codeforces-sync@v1.0
+        with:
+          handle: ${{ secrets.CF_HANDLE }}
+          session_id: ${{ secrets.CF_SESSION }}
+          destination-folder: solutions/codeforces
