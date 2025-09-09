@@ -16,10 +16,9 @@ jobs:
         uses: joshcai/leetcode-sync@v1.7
         with:
           github-token: ${{ github.token }}
-          leetcode-csrf-token: ${{ secrets.CSRFTOKEN}}
+          leetcode-csrf-token: ${{ secrets.CSRFTOKEN }}
           leetcode-session: ${{ secrets.LEETCODE_SESSION }}
           destination-folder: solutions/leetcode
-          solution-folder: solutions
           verbose: true
 
   sync_gfg:
