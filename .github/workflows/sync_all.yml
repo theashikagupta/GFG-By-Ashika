@@ -16,9 +16,10 @@ jobs:
         uses: joshcai/leetcode-sync@v1.7
         with:
           github-token: ${{ github.token }}
-          leetcode-csrf-token: ${{ secrets.CSRFTOKEN }}
+          leetcode-csrf-token: ${{ secrets.CSRFTOKEN}}
           leetcode-session: ${{ secrets.LEETCODE_SESSION }}
           destination-folder: solutions/leetcode
+          solution-folder: solutions
           verbose: true
 
   sync_gfg:
@@ -26,22 +27,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.x'
-
-      - name: Install dependencies
-        run: pip install requests beautifulsoup4
-
       - name: Sync GFG Submissions
-        uses: rahul-bhatia/gfg-scraper@v1.0
+        uses: Sreerag-B-S/gfg-sync@v1.1
         with:
           username: ${{ secrets.GFG_USERNAME }}
           password: ${{ secrets.GFG_PASSWORD }}
-          csrf_token: ${{ secrets.GFG_CSRF_TOKEN }}
-          gfg_token: ${{ secrets.GFG_TOKEN }}
-          destination_folder: solutions/gfg
+          destination-folder: solutions/gfg
 
   sync_codeforces:
     runs-on: ubuntu-latest
@@ -50,7 +41,7 @@ jobs:
         uses: actions/checkout@v4
       
       - name: Sync Codeforces Submissions
-        uses: anand-mishra123/codeforces-sync@v1.0
+        uses: ra-mishra/codeforces-sync@v2
         with:
           handle: ${{ secrets.CF_HANDLE }}
           session_id: ${{ secrets.CF_SESSION }}
