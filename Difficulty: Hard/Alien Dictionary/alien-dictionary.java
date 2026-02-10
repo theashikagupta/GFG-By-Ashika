@@ -5,7 +5,7 @@ class Solution {
         ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
         int[] indegree = new int[K];
         Arrays.fill(indegree, -1);
-
+        
         for (int i = 0; i < K; i++) {
             adj.add(new ArrayList<>());
         }
